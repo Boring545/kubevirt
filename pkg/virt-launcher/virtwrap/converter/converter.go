@@ -141,6 +141,10 @@ func isARM64(arch string) bool {
 	return arch == "arm64"
 }
 
+func isRISCV64(arch string) bool {
+	return arch == "riscv64"
+}
+
 func isPPC64(arch string) bool {
 	return arch == "ppc64le"
 }

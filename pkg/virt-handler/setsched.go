@@ -1,4 +1,4 @@
-//go:build (linux && amd64) || (linux && arm64) || (linux && s390x)
+//go:build (linux && amd64) || (linux && arm64) || (linux && s390x) || (linux && riscv64)
 
 package virthandler
 

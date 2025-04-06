@@ -793,6 +793,18 @@ var CRDsValidation map[string]string = map[string]string{
                     ovmfPath:
                       type: string
                   type: object
+		riscv64:
+      		  properties:
+        	    emulatedMachines:
+          	      items:
+            	        type: string
+          	      type: array
+          	      x-kubernetes-list-type: atomic
+        	    machineType:
+          	      type: string
+        	    ovmfPath:
+          	      type: string
+      	          type: object
                 defaultArchitecture:
                   type: string
                 ppc64le:

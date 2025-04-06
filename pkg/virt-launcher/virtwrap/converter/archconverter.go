@@ -41,6 +41,8 @@ func newArchConverter(arch string) archConverter {
 		return archConverterARM64{}
 	case isPPC64(arch):
 		return archConverterPPC64{}
+	case isRISCV64(arch):
+                return archConverterRISCV64{}
 	case isS390X(arch):
 		return archConverterS390X{}
 	case isAMD64(arch):

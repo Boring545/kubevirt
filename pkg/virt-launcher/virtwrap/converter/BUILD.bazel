@@ -13,6 +13,7 @@ go_library(
         "pci-placement.go",
         "ppc64le.go",
         "s390x.go",
+	"riscv64.go",
         "virtiofs.go",
     ],
     importpath = "kubevirt.io/kubevirt/pkg/virt-launcher/virtwrap/converter",

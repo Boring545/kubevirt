@@ -27,6 +27,10 @@ func (d *Defaulter) IsS390X() bool {
 	return d.Architecture == "s390x"
 }
 
+func (d *Defaulter) IsRISCV64() bool {
+        return d.Architecture == "riscv64"
+}
+
 func (d *Defaulter) SetDefaults_OSType(ostype *OSType) {
 	ostype.OS = "hvm"
 
@@ -38,6 +42,8 @@ func (d *Defaulter) SetDefaults_OSType(ostype *OSType) {
 			ostype.Arch = "aarch64"
 		case d.IsS390X():
 			ostype.Arch = "s390x"
+		case d.IsRISCV64():
+                        ostype.Arch = "riscv64"
 		default:
 			ostype.Arch = "x86_64"
 		}
@@ -51,6 +57,8 @@ func (d *Defaulter) SetDefaults_OSType(ostype *OSType) {
 			ostype.Machine = "pseries"
 		case d.IsARM64():
 			ostype.Machine = "virt"
+		case d.IsRISCV64():
+                        ostype.Machine = "virt"
 		case d.IsS390X():
 			ostype.Machine = "s390-ccw-virtio"
 		default:

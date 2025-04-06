@@ -86,6 +86,10 @@ func (n *NodeLabeller) loadDomCapabilities() error {
 				log.Log.Warning("host-model cpu mode is not supported for ARM architecture")
 				continue
 			}
+                        if virtconfig.IsRISCV64(n.arch) {
+                                log.Log.Warning("host-model cpu mode is not supported for RISCV architecture")
+                                continue
+                        }
 
 			n.cpuModelVendor = mode.Vendor.Name
 			// On s390x the xml does not include a CPU Vendor, however there is only one company selling them anyway.

@@ -45,12 +45,14 @@ const (
 	DefaultAMD64MachineType                         = "q35"
 	DefaultPPC64LEMachineType                       = "pseries"
 	DefaultAARCH64MachineType                       = "virt"
+	DefaultRISCV64MachineType                       = "virt"
 	DefaultS390XMachineType                         = "s390-ccw-virtio"
 	DefaultCPURequest                               = "100m"
 	DefaultMemoryOvercommit                         = 100
 	DefaultAMD64EmulatedMachines                    = "q35*,pc-q35*"
 	DefaultPPC64LEEmulatedMachines                  = "pseries*"
 	DefaultAARCH64EmulatedMachines                  = "virt*"
+	DefaultRISCV64EmulatedMachines                  = "virt*"
 	DefaultS390XEmulatedMachines                    = "s390-ccw-virtio*"
 	DefaultLessPVCSpaceToleration                   = 10
 	DefaultMinimumReservePVCBytes                   = 131072
@@ -95,6 +97,11 @@ func IsAMD64(arch string) bool {
 	return arch == "amd64"
 }
 
+func IsRISCV64(arch string) bool {
+        return arch == "riscv64"
+}
+
+
 func IsARM64(arch string) bool {
 	return arch == "arm64"
 }
@@ -137,6 +144,8 @@ func (c *ClusterConfig) GetMachineType(arch string) string {
 	switch arch {
 	case "arm64":
 		return c.GetConfig().ArchitectureConfiguration.Arm64.MachineType
+	case "riscv64":
+                return c.GetConfig().ArchitectureConfiguration.Riscv64.MachineType
 	case "ppc64le":
 		return c.GetConfig().ArchitectureConfiguration.Ppc64le.MachineType
 	case "s390x":
@@ -171,6 +180,8 @@ func (c *ClusterConfig) GetEmulatedMachines(arch string) []string {
 	switch arch {
 	case "arm64":
 		return c.GetConfig().ArchitectureConfiguration.Arm64.EmulatedMachines
+	case "riscv64":
+                return c.GetConfig().ArchitectureConfiguration.Riscv64.EmulatedMachines
 	case "ppc64le":
 		return c.GetConfig().ArchitectureConfiguration.Ppc64le.EmulatedMachines
 	case "s390x":
@@ -237,6 +248,8 @@ func (c *ClusterConfig) GetOVMFPath(arch string) string {
 	switch arch {
 	case "arm64":
 		return c.GetConfig().ArchitectureConfiguration.Arm64.OVMFPath
+	case "riscv64":
+                return c.GetConfig().ArchitectureConfiguration.Riscv64.OVMFPath
 	case "ppc64le":
 		return c.GetConfig().ArchitectureConfiguration.Ppc64le.OVMFPath
 	case "s390x":

@@ -118,6 +118,10 @@ func IsARM64VMI(vmi *v1.VirtualMachineInstance) bool {
 	return vmi.Spec.Architecture == "arm64"
 }
 
+func IsRISCV64VMI(vmi *v1.VirtualMachineInstance) bool {
+	return vmi.Spec.Architecture == "riscv64"
+}
+
 func IsEFIVMI(vmi *v1.VirtualMachineInstance) bool {
 	return vmi.Spec.Domain.Firmware != nil &&
 		vmi.Spec.Domain.Firmware.Bootloader != nil &&

@@ -8,6 +8,7 @@ go_library(
         "defaults.go",
         "hyperv.go",
         "s390x.go",
+	"riscv64.go",
     ],
     importpath = "kubevirt.io/kubevirt/pkg/defaults",
     visibility = ["//visibility:public"],

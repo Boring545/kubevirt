@@ -4,6 +4,7 @@ go_library(
     name = "go_default_library",
     srcs = [
         "arm64.go",
+	"riscv64.go",
         "hyperv.go",
         "serviceaccounts.go",
         "utils.go",

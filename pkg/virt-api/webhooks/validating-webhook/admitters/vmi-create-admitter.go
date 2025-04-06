@@ -130,6 +130,12 @@ func (admitter *VMICreateAdmitter) Admit(_ context.Context, ar *admissionv1.Admi
 		// Check if there is any unsupported setting if the arch is Arm64
 		causes = append(causes, webhooks.ValidateVirtualMachineInstanceArm64Setting(k8sfield.NewPath("spec"), &vmi.Spec)...)
 	}
+
+        if webhooks.IsRISCV64(&vmi.Spec) {
+                // Check if there is any unsupported setting if the arch is riscv64
+                causes = append(causes, webhooks.ValidateVirtualMachineInstanceRiscv64Setting(k8sfield.NewPath("spec"), &vmi.Spec)...)
+        }
+
 	if len(causes) > 0 {
 		return webhookutils.ToAdmissionResponse(causes)
 	}
@@ -690,10 +696,10 @@ func validateThreadCountOnArchitecture(field *k8sfield.Path, spec *v1.VirtualMac
 	}
 
 	// Verify CPU thread count requested is 1 for ARM64 VMI architecture.
-	if spec.Domain.CPU != nil && spec.Domain.CPU.Threads > 1 && virtconfig.IsARM64(arch) {
+	if spec.Domain.CPU != nil && spec.Domain.CPU.Threads > 1 && (virtconfig.IsARM64(arch) || (virtconfig.IsRISCV64(arch)) {
 		causes = append(causes, metav1.StatusCause{
 			Type: metav1.CauseTypeFieldValueInvalid,
-			Message: fmt.Sprintf("threads must not be greater than 1 at %v (got %v) when %v is arm64",
+			Message: fmt.Sprintf("threads must not be greater than 1 at %v (got %v) when %v is arm64/riscv64",
 				field.Child("domain", "cpu", "threads").String(),
 				spec.Domain.CPU.Threads,
 				field.Child("architecture").String(),
