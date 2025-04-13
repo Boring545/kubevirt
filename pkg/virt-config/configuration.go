@@ -262,9 +262,9 @@ func defaultClusterConfig(cpuArch string) *v1.KubeVirtConfiguration {
 				MachineType:      DefaultPPC64LEMachineType,
 			},
 			Riscv64: &v1.ArchSpecificConfiguration{
-        			OVMFPath:         DefaultRISCVC64OVMFPath,
+        			OVMFPath:         DefaultRISCV64OVMFPath,
         			EmulatedMachines: strings.Split(DefaultRISCV64EmulatedMachines, ","),
-        			MachineType:      DefaultRISCVC64MachineType,
+        			MachineType:      DefaultRISCV64MachineType,
     			},
 			DefaultArchitecture: runtime.GOARCH,
 		},

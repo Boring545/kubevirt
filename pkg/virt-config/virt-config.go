@@ -70,6 +70,7 @@ const (
 	SupportedGuestAgentVersions                     = "2.*,3.*,4.*,5.*"
 	DefaultARCHOVMFPath                             = "/usr/share/OVMF"
 	DefaultAARCH64OVMFPath                          = "/usr/share/AAVMF"
+	DefaultRISCV64OVMFPath				= "/usr/share/RVVMF"
 	DefaultMemBalloonStatsPeriod             uint32 = 10
 	DefaultCPUAllocationRatio                       = 10
 	DefaultDiskVerificationMemoryLimitMBytes        = 2000
