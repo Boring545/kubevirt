@@ -96,9 +96,8 @@ func ValidateLiveUpdateMemory(vmSpec *v1.VirtualMachineInstanceSpec, maxGuest *r
 	}
 
 	if vmSpec.Architecture != "amd64" &&
-		vmSpec.Architecture != "arm64" &&
-		vmSpec.Architecture != "riscv64" {
-		return fmt.Errorf("Memory hotplug is only available for x86_64 and arm64 and riscv64 VMs")
+		vmSpec.Architecture != "arm64" {
+		return fmt.Errorf("Memory hotplug is only available for x86_64 and arm64 VMs")
 	}
 
 	if domain.Memory.Guest.Value() < requiredMinGuestMemory {

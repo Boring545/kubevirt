@@ -362,7 +362,7 @@ func GetMemoryOverhead(vmi *v1.VirtualMachineInstance, cpuArch string, additiona
 	}
 
 	if cpuArch == "riscv64" {
-		overhead.Add(resource.MustParse("128Mi"))
+		overhead.Add(resource.MustParse("64Mi"))
 	}
 
 
