@@ -130,6 +130,11 @@ func (in *ArchConfiguration) DeepCopyInto(out *ArchConfiguration) {
 		*out = new(ArchSpecificConfiguration)
 		(*in).DeepCopyInto(*out)
 	}
+	if in.Riscv64 != nil {
+                in, out := &in.Riscv64, &out.Riscv64
+                *out = new(ArchSpecificConfiguration)
+                (*in).DeepCopyInto(*out)
+        }
 	if in.Ppc64le != nil {
 		in, out := &in.Ppc64le, &out.Ppc64le
 		*out = new(ArchSpecificConfiguration)

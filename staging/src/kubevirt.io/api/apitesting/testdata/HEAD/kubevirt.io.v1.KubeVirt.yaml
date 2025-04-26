@@ -63,6 +63,11 @@ spec:
         - emulatedMachinesValue
         machineType: machineTypeValue
         ovmfPath: ovmfPathValue
+      riscv64:
+        emulatedMachines:
+        - emulatedMachinesValue
+        machineType: machineTypeValue
+        ovmfPath: ovmfPathValue
       defaultArchitecture: defaultArchitectureValue
       ppc64le:
         emulatedMachines:

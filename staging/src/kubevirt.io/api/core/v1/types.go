@@ -2589,6 +2589,7 @@ const (
 type ArchConfiguration struct {
 	Amd64               *ArchSpecificConfiguration `json:"amd64,omitempty"`
 	Arm64               *ArchSpecificConfiguration `json:"arm64,omitempty"`
+	Riscv64               *ArchSpecificConfiguration `json:"riscv64,omitempty"`
 	Ppc64le             *ArchSpecificConfiguration `json:"ppc64le,omitempty"`
 	DefaultArchitecture string                     `json:"defaultArchitecture,omitempty"`
 }

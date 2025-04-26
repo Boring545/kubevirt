@@ -17249,6 +17249,11 @@ func schema_kubevirtio_api_core_v1_ArchConfiguration(ref common.ReferenceCallbac
 							Ref: ref("kubevirt.io/api/core/v1.ArchSpecificConfiguration"),
 						},
 					},
+					 "riscv64": {
+                                                SchemaProps: spec.SchemaProps{
+                                                        Ref: ref("kubevirt.io/api/core/v1.ArchSpecificConfiguration"),
+                                                },
+                                        },
 					"ppc64le": {
 						SchemaProps: spec.SchemaProps{
 							Ref: ref("kubevirt.io/api/core/v1.ArchSpecificConfiguration"),
