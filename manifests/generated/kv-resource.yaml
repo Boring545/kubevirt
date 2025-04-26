@@ -181,6 +181,18 @@ spec:
                           ovmfPath:
                             type: string
                         type: object
+                      riscv64:
+                        properties:
+                          emulatedMachines:
+                            items:
+                              type: string
+                            type: array
+                            x-kubernetes-list-type: atomic
+                          machineType:
+                            type: string
+                          ovmfPath:
+                            type: string
+                        type: object
                     type: object
                   autoCPULimitNamespaceLabelSelector:
                     description: |-
@@ -3427,6 +3439,18 @@ spec:
                       defaultArchitecture:
                         type: string
                       ppc64le:
+                        properties:
+                          emulatedMachines:
+                            items:
+                              type: string
+                            type: array
+                            x-kubernetes-list-type: atomic
+                          machineType:
+                            type: string
+                          ovmfPath:
+                            type: string
+                        type: object
+                      riscv64:
                         properties:
                           emulatedMachines:
                             items:

@@ -12590,6 +12590,9 @@
      },
      "ppc64le": {
       "$ref": "#/definitions/v1.ArchSpecificConfiguration"
+     },
+     "riscv64": {
+      "$ref": "#/definitions/v1.ArchSpecificConfiguration"
      }
     }
    },

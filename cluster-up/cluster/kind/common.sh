@@ -24,8 +24,11 @@ ppc64le)
 aarch64* | arm64*)
     ARCH="arm64"
     ;;
+riscv64)
+    ARCH="riscv64"
+    ;;
 *)
-    echo "invalid Arch, only support x86_64, ppc64le, aarch64"
+    echo "invalid Arch, only support x86_64, ppc64le, aarch64, riscv64"
     exit 1
     ;;
 esac
