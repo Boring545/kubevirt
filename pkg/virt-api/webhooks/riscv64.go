@@ -16,15 +16,15 @@ const (
 // ValidateVirtualMachineInstanceRiscv64Setting is a validation function for validating-webhook to filter unsupported setting on Riscv64
 func ValidateVirtualMachineInstanceRiscv64Setting(field *k8sfield.Path, spec *v1.VirtualMachineInstanceSpec) []metav1.StatusCause {
 	var statusCauses []metav1.StatusCause
-	validateBootOptions(field, spec, &statusCauses)
-	validateCPUModel(field, spec, &statusCauses)
-	validateDiskBus(field, spec, &statusCauses)
-	validateWatchdog(field, spec, &statusCauses)
-	validateSoundDevice(field, spec, &statusCauses)
+	validateBootOptions_rv(field, spec, &statusCauses)
+	validateCPUModel_rv(field, spec, &statusCauses)
+	validateDiskBus_rv(field, spec, &statusCauses)
+	validateWatchdog_rv(field, spec, &statusCauses)
+	validateSoundDevice_rv(field, spec, &statusCauses)
 	return statusCauses
 }
 
-func validateBootOptions(field *k8sfield.Path, spec *v1.VirtualMachineInstanceSpec, statusCauses *[]metav1.StatusCause) {
+func validateBootOptions_rv(field *k8sfield.Path, spec *v1.VirtualMachineInstanceSpec, statusCauses *[]metav1.StatusCause) {
 	if spec.Domain.Firmware != nil && spec.Domain.Firmware.Bootloader != nil {
 		if spec.Domain.Firmware.Bootloader.BIOS != nil {
 			*statusCauses = append(*statusCauses, metav1.StatusCause{
@@ -45,7 +45,7 @@ func validateBootOptions(field *k8sfield.Path, spec *v1.VirtualMachineInstanceSp
 	}
 }
 
-func validateCPUModel(field *k8sfield.Path, spec *v1.VirtualMachineInstanceSpec, statusCauses *[]metav1.StatusCause) {
+func validateCPUModel_rv(field *k8sfield.Path, spec *v1.VirtualMachineInstanceSpec, statusCauses *[]metav1.StatusCause) {
 	if spec.Domain.CPU != nil && (&spec.Domain.CPU.Model != nil) && spec.Domain.CPU.Model == "host-model" {
 		*statusCauses = append(*statusCauses, metav1.StatusCause{
 			Type:    metav1.CauseTypeFieldValueNotSupported,
@@ -55,7 +55,7 @@ func validateCPUModel(field *k8sfield.Path, spec *v1.VirtualMachineInstanceSpec,
 	}
 }
 
-func validateDiskBus(field *k8sfield.Path, spec *v1.VirtualMachineInstanceSpec, statusCauses *[]metav1.StatusCause) {
+func validateDiskBus_rv(field *k8sfield.Path, spec *v1.VirtualMachineInstanceSpec, statusCauses *[]metav1.StatusCause) {
 	if spec.Domain.Devices.Disks != nil {
 		// checkIfBusAvailable: if bus type is nil, virtio, scsi return true, otherwise, return false
 		checkIfBusAvailable := func(bus v1.DiskBus) bool {
@@ -91,7 +91,7 @@ func validateDiskBus(field *k8sfield.Path, spec *v1.VirtualMachineInstanceSpec, 
 	}
 }
 
-func validateWatchdog(field *k8sfield.Path, spec *v1.VirtualMachineInstanceSpec, statusCauses *[]metav1.StatusCause) {
+func validateWatchdog_rv(field *k8sfield.Path, spec *v1.VirtualMachineInstanceSpec, statusCauses *[]metav1.StatusCause) {
 	if spec.Domain.Devices.Watchdog != nil {
 		*statusCauses = append(*statusCauses, metav1.StatusCause{
 			Type:    metav1.CauseTypeFieldValueNotSupported,
@@ -101,7 +101,7 @@ func validateWatchdog(field *k8sfield.Path, spec *v1.VirtualMachineInstanceSpec,
 	}
 }
 
-func validateSoundDevice(field *k8sfield.Path, spec *v1.VirtualMachineInstanceSpec, statusCauses *[]metav1.StatusCause) {
+func validateSoundDevice_rv(field *k8sfield.Path, spec *v1.VirtualMachineInstanceSpec, statusCauses *[]metav1.StatusCause) {
 	if spec.Domain.Devices.Sound != nil {
 		*statusCauses = append(*statusCauses, metav1.StatusCause{
 			Type:    metav1.CauseTypeFieldValueNotSupported,
