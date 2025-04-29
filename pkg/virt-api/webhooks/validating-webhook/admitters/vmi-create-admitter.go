@@ -696,7 +696,7 @@ func validateThreadCountOnArchitecture(field *k8sfield.Path, spec *v1.VirtualMac
 	}
 
 	// Verify CPU thread count requested is 1 for ARM64 VMI architecture.
-	if spec.Domain.CPU != nil && spec.Domain.CPU.Threads > 1 && (virtconfig.IsARM64(arch) || (virtconfig.IsRISCV64(arch) {
+	if spec.Domain.CPU != nil && spec.Domain.CPU.Threads > 1 && virtconfig.IsARM64(arch) || virtconfig.IsRISCV64(arch) {
 		causes = append(causes, metav1.StatusCause{
 			Type: metav1.CauseTypeFieldValueInvalid,
 			Message: fmt.Sprintf("threads must not be greater than 1 at %v (got %v) when %v is arm64/riscv64",
