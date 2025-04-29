@@ -77,7 +77,7 @@ func SetRISCVC64Defaults(spec *v1.VirtualMachineInstanceSpec) {
 }
 
 // IsRISCVC64 checks if the architecture is RISCV
-func IsRISCVC64(vmiSpec *v1.VirtualMachineInstanceSpec) bool {
+func IsRISCV64(vmiSpec *v1.VirtualMachineInstanceSpec) bool {
 	return vmiSpec.Architecture == "riscv64"
 }
 
