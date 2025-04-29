@@ -19,7 +19,7 @@ import (
 	v1 "kubevirt.io/api/core/v1"
 )
 
-var _false bool = false
+var _false_rv bool = false
 
 const (
 	defaultCPUModelRISCVC64 = v1.CPUModeHostPassthrough
@@ -46,7 +46,7 @@ func setDefaultRISCVC64Bootloader(spec *v1.VirtualMachineInstanceSpec) {
 			spec.Domain.Firmware.Bootloader = &v1.Bootloader{}
 		}
 		spec.Domain.Firmware.Bootloader.EFI = &v1.EFI{}
-		spec.Domain.Firmware.Bootloader.EFI.SecureBoot = &_false
+		spec.Domain.Firmware.Bootloader.EFI.SecureBoot = &_false_rv
 	}
 }
 
