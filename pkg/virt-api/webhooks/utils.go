@@ -118,7 +118,7 @@ func IsPPC64(vmiSpec *v1.VirtualMachineInstanceSpec) bool {
 func IsS390X(vmiSpec *v1.VirtualMachineInstanceSpec) bool {
 	return vmiSpec.Architecture == "s390x"
 }
-func IsRISCVC64(vmiSpec *v1.VirtualMachineInstanceSpec) bool {
+func IsRISCV64(vmiSpec *v1.VirtualMachineInstanceSpec) bool {
     return vmiSpec.Architecture == "riscv64"
 }
 
